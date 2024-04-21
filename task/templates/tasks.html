@@ -1,0 +1,55 @@
+{% extends 'menu.html' %}
+
+
+{% block content %}
+
+
+<main class="container mt-5">
+
+    <div class="row lembretes">
+
+        <div class="col-md-5 offset-md-3">
+
+            <h1  class="text-center" >  Seus lembretes </h1>
+
+                <ul class="list-group">
+
+                    {% for task in tasks %}
+
+                    <a class="list-group-item" href="{% url 'task_detalhe'  task.id %}">
+
+                            <header class="d-flex justify-content-between lembrete">
+
+                                {% if task.important %}
+
+                                    <strong class="fw-bold text-success">  {{task.title}}</strong>
+                                    <strong class="fw-bold text-success">  {{task.describe}}</strong>
+
+                                {% else %}    
+
+
+                                <p class="fw-bold textos"> {{task.title}} </p>
+                                <strong class="fw-bold text-success">  {{task.describe}}</strong>
+
+                                {% endif %}
+
+                                <p class="textos"> By: {{ task.user.username }}</p>
+
+                            </header>
+
+
+                    {% endfor %}
+
+
+
+
+                </ul>
+
+
+        </div>
+
+    </div>
+
+</main>     
+
+{% endblock %}    
